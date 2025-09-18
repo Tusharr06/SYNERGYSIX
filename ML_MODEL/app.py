@@ -1,100 +1,75 @@
-import streamlit as st
+from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from PIL import Image
-import cv2
+import io
 import os
 import json
-import warnings
-import matplotlib.pyplot as plt
 
-warnings.filterwarnings('ignore')
+app = FastAPI(title="Plant Disease Detection API", version="1.0.0")
 
-st.set_page_config(
-    page_title="Plant Disease Detection",
-    page_icon="🌱",
-    layout="wide",
-    initial_sidebar_state="expanded"
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 MODEL_PATH = "models/best_model.h5"
-if not os.path.exists(MODEL_PATH):
-    st.error("❌ Trained model not found at path: models/best_model.h5")
-    st.stop()
-
-@st.cache_resource
-def load_model():
-    return tf.keras.models.load_model(MODEL_PATH)
-
-model = load_model()
-st.success("✅ Model loaded successfully!")
-
 CLASS_INDEX_PATH = "class_indices.json"
-if not os.path.exists(CLASS_INDEX_PATH):
-    st.error("❌ class_indices.json not found! Please export it during training.")
-    st.stop()
 
+if not os.path.exists(MODEL_PATH):
+    raise RuntimeError("Trained model not found at path: models/best_model.h5")
+if not os.path.exists(CLASS_INDEX_PATH):
+    raise RuntimeError("class_indices.json not found! Please export it during training.")
+
+model = tf.keras.models.load_model(MODEL_PATH)
 with open(CLASS_INDEX_PATH) as f:
     class_indices = json.load(f)
-
 CLASS_NAMES = [k for k, v in sorted(class_indices.items(), key=lambda item: item[1])]
-NUM_CLASSES = len(CLASS_NAMES)
 
-st.sidebar.markdown("### Dataset Info")
-st.sidebar.write(f"**Classes detected:** {NUM_CLASSES}")
-for i, cls in enumerate(CLASS_NAMES, start=1):
-    st.sidebar.write(f"{i}. {cls}")
-
-def preprocess_image(image, target_size=(224, 224)):
+def preprocess_image_bytes(image_bytes: bytes, target_size=(224, 224)):
     try:
-        img_array = np.array(image.convert("RGB"))
-        img_resized = cv2.resize(img_array, target_size)
-        img_preprocessed = preprocess_input(img_resized.astype(np.float32))
+        image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        img_array = np.array(image)
+        img_resized = tf.image.resize(img_array, target_size).numpy().astype(np.float32)
+        img_preprocessed = preprocess_input(img_resized)
         img_batch = np.expand_dims(img_preprocessed, axis=0)
         return img_batch
     except Exception as e:
-        st.error(f"⚠️ Error preprocessing image: {str(e)}")
-        return None
+        raise HTTPException(status_code=400, detail=f"Error preprocessing image: {str(e)}")
 
-def predict(image):
-    img_batch = preprocess_image(image)
-    if img_batch is None:
-        return None, None, None
+@app.get("/")
+def root():
+    return {"status": "ok", "num_classes": len(CLASS_NAMES)}
+
+@app.post("/predict")
+async def predict(file: UploadFile = File(...)):
+    if file.content_type not in ("image/jpeg", "image/png", "image/jpg"):
+        raise HTTPException(status_code=415, detail="Unsupported file type")
+
+    image_bytes = await file.read()
+    img_batch = preprocess_image_bytes(image_bytes)
 
     preds = model.predict(img_batch)
-    num_model_classes = preds.shape[1]
-
-    if num_model_classes != len(CLASS_NAMES):
-        st.error(f"❌ Mismatch: Model outputs {num_model_classes} classes but class_indices.json has {len(CLASS_NAMES)}")
-        return None, None, None
+    if preds.ndim != 2 or preds.shape[1] != len(CLASS_NAMES):
+        raise HTTPException(status_code=500, detail="Model output shape mismatch with class indices")
 
     top_indices = preds[0].argsort()[-3:][::-1]
-    top_classes = [CLASS_NAMES[i] for i in top_indices]
-    top_confidences = [float(preds[0][i]) for i in top_indices]
+    results = [
+        {
+            "class": CLASS_NAMES[i],
+            "confidence": float(preds[0][i])
+        }
+        for i in top_indices
+    ]
+    return {"predictions": results}
 
-    return top_classes, top_confidences, preds
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", "8000"))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)
 
-st.markdown("<h1 class='main-header'>🌱 Plant Disease Detection</h1>", unsafe_allow_html=True)
-st.markdown("Upload a plant leaf image to detect its health condition.")
-
-uploaded_file = st.file_uploader("📤 Upload Image", type=["jpg", "jpeg", "png"])
-
-if uploaded_file:
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
-
-    if st.button("🔍 Predict"):
-        with st.spinner("Analyzing image..."):
-            top_classes, top_confidences, preds = predict(image)
-
-        if top_classes:
-            st.success(f"✅ Predicted: **{top_classes[0]}** ({top_confidences[0]*100:.2f}% confidence)")
-
-            fig, ax = plt.subplots()
-            ax.barh(top_classes[::-1], [c*100 for c in top_confidences[::-1]], color="green")
-            ax.set_xlabel("Confidence (%)")
-            ax.set_title("Top-3 Predictions")
-            st.pyplot(fig)
-        else:
-            st.error("❌ Could not make a prediction. Please try again.")

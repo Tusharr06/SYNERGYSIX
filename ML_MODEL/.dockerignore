@@ -1,0 +1,16 @@
+.git
+__pycache__
+*.py[cod]
+*.so
+# Keep model in image for Railway
+# *.h5
+*.tflite
+split_dataset/
+*.ipynb
+*.jpg
+*.JPG
+# models/*.h5
+models/*.tflite
+.env
+README.md
+
