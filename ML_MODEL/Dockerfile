@@ -19,5 +19,9 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "app.py"]
+# Default port, can be overridden by runtime env PORT
+ENV PORT=8000
+
+# Start FastAPI with Uvicorn
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "${PORT}"]
 
