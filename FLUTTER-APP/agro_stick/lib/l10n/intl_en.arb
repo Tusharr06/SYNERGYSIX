@@ -1,0 +1,132 @@
+{
+  "@@locale": "en",
+  "appTitle": "Agrostick App",
+  "profile": "Profile",
+  "personalInformation": "Personal Information",
+  "name": "Name",
+  "phone": "Phone",
+  "farmName": "Farm Name",
+  "language": "Language",
+  "saveProfile": "Save Profile",
+  "logout": "Logout",
+  "profileUpdated": "Profile updated successfully",
+  "profileUpdateError": "Error updating profile: {error}",
+  "@profileUpdateError": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "welcome": "Welcome!",
+  "hi": "Hi",
+  "weeklyWeather": "Weekly Weather",
+  "fetchingWeather": "Fetching 7-day weather…",
+  "weatherUnavailable": "Weather unavailable",
+  "espStatus": "ESP32-S3 Status",
+  "connected": "Connected",
+  "disconnected": "Disconnected",
+  "batteryLevel": "Battery Level",
+  "temperature": "Temperature",
+  "sprayStatus": "Spray Status",
+  "idle": "Idle",
+  "spraying": "Spraying",
+  "blogs": "Blogs",
+  "viewAll": "View All",
+  "sprayHistory": "Spray History",
+  "today": "Today",
+  "thisWeek": "This Week",
+  "thisMonth": "This Month",
+  "sprays": "Sprays",
+  "sprayDetails": "Spray Details",
+  "sprayTrend": "Spray Trend",
+  "spray": "Spray",
+  "time": "Time",
+  "amount": "Amount",
+  "liters": "L",
+  "@sprayNumber": {
+    "description": "Dynamic spray number like 'Spray 1'",
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "sprayNumber": "Spray {number}",
+  "cropHealth": "Crop Health",
+  "farmMapping": "Farm Mapping",
+  "farmMappingDescription": "Map your farm boundary and detect disease locations with precision",
+  "openFarmMapping": "Open Farm Mapping",
+  "scanField": "Scan Field for Accurate Results",
+  "scanFieldDescription": "Initiate a field scan to detect crop health issues with high accuracy",
+  "fieldScan": "Field Scan",
+  "loadingModel": "Loading model...",
+  "selectImageSource": "Select Image Source",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "cancel": "Cancel",
+  "quickActions": "Quick Actions",
+  "startSpray": "Start Spray",
+  "stopSpray": "Stop Spray",
+  "scheduleSpray": "Schedule Spray",
+  "environmentalConditions": "Environmental Conditions",
+  "humidity": "Humidity",
+  "soilCondition": "Soil Condition",
+  "optimal": "Optimal",
+  "overallInfectionLevel": "Overall Infection Level",
+  "cropStatus": "Crop Status",
+  "healthy": "Healthy",
+  "unhealthy": "Unhealthy",
+  "treatmentRecommendations": "Treatment Recommendations",
+  "basedOnCurrentInfection": "Based on current infection level:",
+  "applyHighDosagePesticide": "Apply high-dosage targeted pesticide",
+  "inspectAndMonitorDaily": "Inspect and monitor daily for spread; re-scan in 24 hours",
+  "removeAffectedLeaves": "Remove heavily affected leaves; isolate diseased plants to limit spread",
+  "startingPesticideSpray": "Starting pesticide spray...",
+  "stoppingPesticideSpray": "Stopping pesticide spray...",
+  "openingSpraySchedule": "Opening spray schedule...",
+  "rateLimitedMessage": "Rate limited. Please wait {seconds} seconds...",
+  "@rateLimitedMessage": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+  "analyzingMessage": "Analyzing...",
+  "rateLimitedRetryMessage": "Rate limited. Retrying in {seconds} seconds... ({attempt}/{maxRetries})",
+  "@rateLimitedRetryMessage": {
+    "placeholders": {
+      "seconds": {},
+      "attempt": {},
+      "maxRetries": {}
+    }
+  },
+  "analysisCompleteMessage": "Analysis complete: {disease}",
+  "@analysisCompleteMessage": {
+    "placeholders": {
+      "disease": {}
+    }
+  },
+  "analysisFailedMessage": "Analysis failed: {error}",
+  "@analysisFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "unknownDiseaseDetected": "Unknown disease detected",
+  "couldNotParseAIResponse": "Could not parse AI response",
+  "notAnalyzed": "Not Analyzed",
+  "lowSeverity": "Low",
+  "mediumSeverity": "Medium",
+  "highSeverity": "High",
+  "applyPesticideFormat": "Apply {pesticide} at {dosage}, {frequency}.",
+  "@applyPesticideFormat": {
+    "placeholders": {
+      "pesticide": {},
+      "dosage": {},
+      "frequency": {}
+    }
+  },
+  "detected": "Detected",
+  "@detected": {
+    "description": "Label for detected disease in scan results"
+  },
+  "pleaseWaitBeforeScanning": "Please wait before scanning again",
+  "invalidImageMessage": "The uploaded image does not appear to be a crop leaf. Please upload a clear image of the leaf or crop.",
+  "tryAgain": "Try Again"
+}

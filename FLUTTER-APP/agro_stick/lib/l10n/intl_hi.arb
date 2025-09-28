@@ -1,0 +1,132 @@
+{
+  "@@locale": "hi",
+  "appTitle": "एग्रोस्टिक ऐप",
+  "profile": "प्रोफाइल",
+  "personalInformation": "व्यक्तिगत जानकारी",
+  "name": "नाम",
+  "phone": "फ़ोन",
+  "farmName": "खेत का नाम",
+  "language": "भाषा",
+  "saveProfile": "प्रोफाइल सहेजें",
+  "logout": "लॉगआउट",
+  "profileUpdated": "प्रोफाइल सफलतापूर्वक अपडेट की गई",
+  "profileUpdateError": "प्रोफाइल अपडेट करने में त्रुटि: {error}",
+  "@profileUpdateError": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "welcome": "स्वागत है!",
+  "hi": "नमस्ते",
+  "weeklyWeather": "साप्ताहिक मौसम",
+  "fetchingWeather": "7-दिवसीय मौसम ला रहे हैं…",
+  "weatherUnavailable": "मौसम जानकारी उपलब्ध नहीं",
+  "espStatus": "ESP32-S3 स्थिति",
+  "connected": "संबद्ध",
+  "disconnected": "असंबद्ध",
+  "batteryLevel": "बैटरी स्तर",
+  "temperature": "तापमान",
+  "sprayStatus": "स्प्रे स्थिति",
+  "idle": "निष्क्रिय",
+  "spraying": "स्प्रे कर रहे हैं",
+  "blogs": "ब्लॉग",
+  "viewAll": "सभी देखें",
+  "sprayHistory": "स्प्रे इतिहास",
+  "today": "आज",
+  "thisWeek": "इस सप्ताह",
+  "thisMonth": "इस महीने",
+  "sprays": "स्प्रे",
+  "sprayDetails": "स्प्रे विवरण",
+  "sprayTrend": "स्प्रे रुझान",
+  "spray": "स्प्रे",
+  "time": "समय",
+  "amount": "मात्रा",
+  "liters": "लीटर",
+  "@sprayNumber": {
+    "description": "Dynamic spray number like 'स्प्रे 1'",
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "sprayNumber": "स्प्रे {number}",
+  "cropHealth": "फसल स्वास्थ्य",
+  "farmMapping": "खेत मैपिंग",
+  "farmMappingDescription": "अपनी खेत की सीमा मैप करें और बीमारी के स्थान का पता लगाएं",
+  "openFarmMapping": "खेत मैपिंग खोलें",
+  "scanField": "सटीक परिणामों के लिए क्षेत्र स्कैन करें",
+  "scanFieldDescription": "फसल स्वास्थ्य समस्याओं का पता लगाने के लिए क्षेत्र स्कैन शुरू करें",
+  "fieldScan": "क्षेत्र स्कैन",
+  "loadingModel": "मॉडल लोड हो रहा है...",
+  "selectImageSource": "छवि स्रोत चुनें",
+  "camera": "कैमरा",
+  "gallery": "गैलरी",
+  "cancel": "रद्द करें",
+  "quickActions": "त्वरित कार्य",
+  "startSpray": "स्प्रे शुरू करें",
+  "stopSpray": "स्प्रे रोकें",
+  "scheduleSpray": "स्प्रे शेड्यूल करें",
+  "environmentalConditions": "पर्यावरणीय स्थितियां",
+  "humidity": "आर्द्रता",
+  "soilCondition": "मिट्टी की स्थिति",
+  "optimal": "अनुकूल",
+  "overallInfectionLevel": "कुल संक्रमण स्तर",
+  "cropStatus": "फसल स्थिति",
+  "healthy": "स्वस्थ",
+  "unhealthy": "अस्वस्थ",
+  "treatmentRecommendations": "उपचार सिफारिशें",
+  "basedOnCurrentInfection": "वर्तमान संक्रमण स्तर के आधार पर:",
+  "applyHighDosagePesticide": "उच्च-खुराक लक्षित कीटनाशक का छिड़काव करें",
+  "inspectAndMonitorDaily": "फैलाव के लिए रोज़ाना जांच करें; 24 घंटे में पुनः-स्कैन करें",
+  "removeAffectedLeaves": "गंभीर रूप से प्रभावित पत्तियों को हटाएं; बीमार पौधों को अलग करें",
+  "startingPesticideSpray": "कीटनाशक स्प्रे शुरू हो रहा है...",
+  "stoppingPesticideSpray": "कीटनाशक स्प्रे रुक रहा है...",
+  "openingSpraySchedule": "स्प्रे शेड्यूल खोल रहे हैं...",
+  "rateLimitedMessage": "रेट सीमित। कृपया {seconds} सेकंड प्रतीक्षा करें...",
+  "@rateLimitedMessage": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+  "analyzingMessage": "विश्लेषण कर रहे हैं...",
+  "rateLimitedRetryMessage": "रेट सीमित। {seconds} सेकंड में पुनः प्रयास कर रहे हैं... ({attempt}/{maxRetries})",
+  "@rateLimitedRetryMessage": {
+    "placeholders": {
+      "seconds": {},
+      "attempt": {},
+      "maxRetries": {}
+    }
+  },
+  "analysisCompleteMessage": "विश्लेषण पूरा: {disease}",
+  "@analysisCompleteMessage": {
+    "placeholders": {
+      "disease": {}
+    }
+  },
+  "analysisFailedMessage": "विश्लेषण विफल: {error}",
+  "@analysisFailedMessage": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "unknownDiseaseDetected": "अज्ञात रोग का पता चला",
+  "couldNotParseAIResponse": "AI प्रतिक्रिया पार्स नहीं हो सकी",
+  "notAnalyzed": "विश्लेषण नहीं किया गया",
+  "lowSeverity": "कम",
+  "mediumSeverity": "मध्यम",
+  "highSeverity": "उच्च",
+  "applyPesticideFormat": "{pesticide} को {dosage} पर, {frequency}।",
+  "@applyPesticideFormat": {
+    "placeholders": {
+      "pesticide": {},
+      "dosage": {},
+      "frequency": {}
+    }
+  },
+  "detected": "पता चला",
+  "@detected": {
+    "description": "Label for detected disease in scan results"
+  },
+  "pleaseWaitBeforeScanning": "कृपया स्कैन करने से पहले प्रतीक्षा करें",
+  "invalidImageMessage": "अपलोड की गई छवि फसल के पत्ते जैसी नहीं लगती। कृपया पत्ते या फसल की स्पष्ट छवि अपलोड करें।",
+  "tryAgain": "फिर से प्रयास करें"
+}

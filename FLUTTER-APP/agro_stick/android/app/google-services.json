@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "508715541851",
+    "project_id": "agrostick",
+    "storage_bucket": "agrostick.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508715541851:android:69182b5ed12b900d0ea67e",
+        "android_client_info": {
+          "package_name": "com.example.agro_stick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508715541851-ama6m9nljrbpe9l3vqp66cc580pgbmph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agro_stick",
+            "certificate_hash": "9c9ad13ba59083e0e3d54eda6aa5abc8ba51170d"
+          }
+        },
+        {
+          "client_id": "508715541851-cqudtfo48475bn1t01k9t68vlib2nr2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3FBvZuyNdtigkfKy4VydRBZBWUA0D4hI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508715541851-cqudtfo48475bn1t01k9t68vlib2nr2k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "508715541851-g1oorlp5tnm9kohinghthg0c0pdfr7vu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.agroStick"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
