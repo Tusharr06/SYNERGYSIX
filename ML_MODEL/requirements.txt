@@ -21,9 +21,10 @@ seaborn>=0.11.0
 jupyter>=1.0.0
 ipykernel>=6.0.0
 
+# Web Framework (for app.py)
+fastapi>=0.68.0
+uvicorn>=0.15.0
+python-multipart>=0.0.5
+
 # Optional: For better performance
 # tensorflow-gpu>=2.8.0,<2.14.0  # Uncomment if you have CUDA-compatible GPU
-
-# Development (optional)
-# jupyterlab>=3.0.0
-# notebook>=6.4.0

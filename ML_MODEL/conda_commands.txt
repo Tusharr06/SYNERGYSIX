@@ -4,26 +4,8 @@ conda create -n plant_disease python=3.10 -y
 # Activate Environment
 conda activate plant_disease
 
-# Install Core Packages
-conda install -c conda-forge numpy=1.24.3 pandas matplotlib scikit-learn pillow opencv jupyter seaborn tensorflow -y
-
-# Install Additional Packages
-pip install fastapi uvicorn python-multipart
+# Install from requirements.txt
+pip install -r requirements.txt
 
 # Verify Installation
 python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__)"
-
-# Deactivate Environment
-conda deactivate
-
-# List Environments
-conda env list
-
-# Remove Environment
-conda env remove -n plant_disease
-
-# Export Environment
-conda env export -n plant_disease > environment.yml
-
-# Create from Environment File
-conda env create -f environment.yml
