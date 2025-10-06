@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Railpack entrypoint: start the ML_MODEL FastAPI service
+# Agro Stick ML Model Service Startup Script
 
-# Use project-local venv to avoid polluting global envs (optional)
-PYTHON_BIN="python3"
-PIP_BIN="pip3"
-if command -v python >/dev/null 2>&1; then PYTHON_BIN="python"; fi
-if command -v pip >/dev/null 2>&1; then PIP_BIN="pip"; fi
+# Check if conda is available
+if ! command -v conda >/dev/null 2>&1; then
+    echo "Error: Conda is not installed or not in PATH"
+    echo "Please install Miniconda or Anaconda first"
+    exit 1
+fi
+
+# Check if environment exists, if not create it
+if ! conda env list | grep -q "agro_stick"; then
+    echo "Creating conda environment from environment.yaml..."
+    conda env create -f environment.yaml
+fi
+
+# Activate environment
+echo "Activating agro_stick environment..."
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate agro_stick
 
 export PYTHONUNBUFFERED=1
 

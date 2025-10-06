@@ -1,11 +1,50 @@
-# Create Environment
-conda create -n plant_disease python=3.10 -y
+# ========================================
+# AGRO STICK - CONDA SETUP INSTRUCTIONS
+# ========================================
+# 
+# PREREQUISITES:
+# 1. Install Miniconda or Anaconda from https://docs.conda.io/en/latest/miniconda.html
+# 2. Clone this repository
+# 3. Navigate to the project directory: cd SYNERGYSIX
+# 4. Open terminal/command prompt in the project root directory
+#
+# STEP-BY-STEP SETUP:
+# ========================================
 
-# Activate Environment
-conda activate plant_disease
+# Step 1: Create Environment from environment.yaml
+# This creates a new conda environment with all required dependencies
+conda env create -f environment.yaml
 
-# Install from requirements.txt
-pip install -r requirements.txt
+# Step 2: Activate Environment
+# This activates the agro_stick environment (required every time you open a new terminal)
+conda activate agro_stick
 
-# Verify Installation
+# Step 3: Navigate to ML_MODEL directory
+# This is where the FastAPI application is located
+cd ML_MODEL
+
+# Step 4: Verify Installation
+# Check if TensorFlow is properly installed and working
 python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__)"
+
+# Step 5: Verify model files exist
+# Ensure the trained model and class indices are present
+python -c "import os; print('Model exists:', os.path.exists('models/best_model.h5')); print('Class indices exist:', os.path.exists('class_indices.json'))"
+
+# Step 6: Test the API (optional)
+# Verify that the FastAPI application can be loaded successfully
+python -c "from app import app; print('API app loaded successfully')"
+
+# ========================================
+# RUNNING THE APPLICATION:
+# ========================================
+# After setup, you can run the API server with:
+# python -m uvicorn app:app --host 0.0.0.0 --port 8000
+#
+# Or use the provided start scripts:
+# - Linux/Mac: ./start.sh
+# - Windows: start.bat
+#
+# The API will be available at: http://localhost:8000
+# API documentation at: http://localhost:8000/docs
+# ========================================
